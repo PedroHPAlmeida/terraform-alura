@@ -9,9 +9,9 @@ provider "aws" {
 
 resource "aws_instance" "dev" {
     count = 3
-    ami = "ami-0149b2da6ceec4bb0"
-    instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    ami = var.amis["us-east-1"]
+    instance_type = var.instance_type
+    key_name = var.key_name
     tags = {
         Name = "dev-${count.index}"
     }
@@ -19,9 +19,9 @@ resource "aws_instance" "dev" {
 }
 
 resource "aws_instance" "dev4" {
-    ami = "ami-0149b2da6ceec4bb0"
-    instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    ami = var.amis["us-east-1"]
+    instance_type = var.instance_type
+    key_name = var.key_name
     tags = {
         Name = "dev-4"
     }
@@ -40,9 +40,9 @@ resource "aws_s3_bucket" "dev4" {
 
 resource "aws_instance" "dev5" {
     provider = aws.us-east-2
-    ami = "ami-07693758d0ebc2111"
-    instance_type = "t2.micro"
-    key_name = "terraform-aws"
+    ami = var.amis["us-east-2"]
+    instance_type = var.instance_type
+    key_name = var.key_name
     tags = {
         Name = "dev-5"
     }
